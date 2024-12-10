@@ -1,0 +1,111 @@
+/* General Sidebar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh; /* Altura completa de la pantalla */
+  background-color: #2c3e50;
+  color: white;
+  transition: width 0.3s, transform 0.3s;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Sidebar colapsado (pantallas grandes) */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+/* Menú móvil: Ocultar inicialmente */
+.sidebar.mobile-open {
+  transform: translateX(0); /* Mostrar el menú en dispositivos móviles */
+}
+
+.sidebar:not(.mobile-open) {
+  transform: none; /* No se oculta en pantallas grandes */
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #1a252f;
+}
+
+.sidebar-logo {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.collapse-icon {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Menu */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #34495e;
+}
+
+.menu-item span {
+  margin-left: 10px;
+}
+
+.has-submenu .submenu {
+  list-style: none;
+  padding-left: 20px;
+  margin: 0;
+  display: none;
+}
+
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+/* Mobile Styles */
+.mobile-menu-button {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  color: white;
+  background-color: #2c3e50;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%); /* Por defecto oculto en móvil */
+    width: 250px;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0); /* Mostrar cuando está abierto */
+  }
+
+  .mobile-menu-button {
+    display: block; /* Botón visible en dispositivos móviles */
+  }
+}
